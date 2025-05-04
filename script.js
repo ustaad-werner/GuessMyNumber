@@ -1,7 +1,7 @@
 'use strict'
 // secret question mark number 
-const secretNumber = Math.trunc( Math.random() * 20 )+1;
-document.querySelector('.number').textContent = secretNumber;
+const secretNumber = Math.trunc( Math.random() * 20 )+1; // algo-method for the secret number
+// document.querySelector('.number').textContent = secretNumber
 // score 
 let score = 20; 
 // eventListener
@@ -14,7 +14,7 @@ document.querySelector('.check').addEventListener('click', function(){
     } else if (guess===secretNumber){ // number is equal hence player wins the game.
         document.querySelector('.message').textContent = "Correct Number!,You Won";
         document.querySelector('.number').textContent = secretNumber;
-        // style property. styling attribute in camelcase and the value will be in a string
+        // style property. styling attribute in camelCase and the value will be in a string
         document.querySelector('body').style.backgroundColor = '#60b347' 
         document.querySelector('.number').style.width = '30rem' 
     }
@@ -38,4 +38,44 @@ document.querySelector('.check').addEventListener('click', function(){
         document.querySelector('.score').textContent = 0
         }    
     }
+})
+
+
+/* 
+coding challenge number #1
+- implement the game reset functionality so that the player can reset the game using the AGAIN button
+steps----> 
+- in the again event handler function restore the initial values of the score and number variables
+- restore the initial conditions of the message, number, score and the guess input field 
+- also restore the original background color (#222) and number width (15 rem)    
+--------------------------------------------
+return the score value to 20;
+reset the highScore 
+restore the bg color and width
+*/
+
+document.querySelector('.again').addEventListener('click', function(){
+    const guess = Number(document.querySelector('.guess').value);
+      if ( guess === secretNumber){
+
+      document.querySelector('.label-score').textContent = '💯 Score: 20';
+
+      document.querySelector('.label-highscore').textContent = '🥇 Highscore: 0';
+
+      document.querySelector('.number').textContent = '?';
+
+      document.querySelector('.message').textContent = 'Start guessing!';
+    
+      document.querySelector('body').style.backgroundColor = '#222';
+
+      document.querySelector('number').style.width = '15rem';
+
+      document.addEventListener('DOMContentLoaded', ()=>{
+        document.querySelector('.guess').value = 0;
+      })
+      
+
+
+
+      }
 })
